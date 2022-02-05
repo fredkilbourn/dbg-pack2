@@ -1,0 +1,29 @@
+{
+  "name": "dbg-pack2",
+  "version": "1.0.0",
+  "description": "Read Daybreak Games pack2 files",
+  "license": "MIT",
+  "author": {
+    "name": "Fred Kilbourn",
+    "email": "fred@fredk.com"
+  },
+  "scripts": {
+    "dbg-pack2": "node source/dbg-pack2.js",
+    "test": "ava"
+  },
+  "type": "module",
+  "engines": {
+    "node": ">=16"
+  },
+  "main": "source/dbg-pack2.js",
+  "dependencies": {
+    "@sindresorhus/is": "^4.4.0",
+    "binary-parser": "^2.0.2",
+    "commander": "^9.0.0",
+    "file-type": "^17.1.1",
+    "hash-jenkins": "^1.0.1"
+  },
+  "devDependencies": {
+    "ava": "^4.0.1"
+  }
+}
