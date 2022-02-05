@@ -34,9 +34,13 @@ async function pack2Extract( pack2_filename_or_path, pack2_output_path_base, nam
 		} :
 		fs.readdirSync( pack2_filename_or_path ).reduce( ( p, c ) =>
 		{
-			p[c] = { path: `${path.normalize( path.resolve( pack2_filename_or_path ) )}/${c}` };
+			if( path.extname( c ) === '.pack2' )
+				p[c] = { path: `${path.normalize( path.resolve( pack2_filename_or_path ) )}/${c}` };
 			return p;
 		}, {} );
+
+	if( Object.keys( pack2_files ).length === 0 )
+		throw new Error( `No .pack2 files found at: ${pack2_filename_or_path}` )
 
 	//resolve and normalize base output path
 	pack2_output_path_base = path.normalize( path.resolve( pack2_output_path_base ) );
