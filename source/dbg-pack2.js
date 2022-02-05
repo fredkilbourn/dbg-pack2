@@ -14,6 +14,7 @@ if( path.resolve( process.argv[1] ) === path.resolve( fileURLToPath( import.meta
 	program
 		.showHelpAfterError()
 		.showSuggestionAfterError()
+		.name( 'npm run dbg-pack2' )
 		.description( 'Read Daybreak Games pack2 files' );
 
 	program.command( 'pack2-extract' )
