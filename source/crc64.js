@@ -134,6 +134,9 @@ const crc64_table =
 
 function crc64( input )
 {
+	if( is.buffer( input ) )
+		input = input.toString( 'utf8' );
+
 	assert.nonEmptyString( input );
 
 	let crc64 = 0xffffffffffffffffn;
@@ -148,9 +151,9 @@ function crc64ToString( crc64 )
 {
 	assert.any( [ is.bigint, is.buffer ], crc64 );
 
-	if( typeof crc64 === 'bigint' )
+	if( is.bigint( crc64 ) )
 		return `0x${crc64.toString( 16 ).padStart( 16, '0' )}`;
-	else if( crc64 instanceof Buffer )
+	else if( is.buffer( crc64 ) )
 		return `0x${crc64.toString( 'hex' ).padStart( 16, '0' )}`;
 	else
 		throw new Error( 'Invalid crc64 type (expected BigInt|Buffer)' );
