@@ -10,12 +10,18 @@ cd dbg-pack2
 npm install
 ```
 
+To update:
+```sh
+git pull
+npm update
+```
+
 ## Usage (as command line)
 
 ```
-$ npm run dbg-pack2 help pack2-extract
+$ npm run dbg-pack2 -- help pack2-extract
 
-  Usage: npm run dbg-pack2 pack2-extract [options] [pack2] [pack2-output] [name-list]
+  Usage: npm run dbg-pack2 -- pack2-extract [options] [pack2] [pack2-output] [name-list]
 
   Arguments:
     pack2         .pack2 file or directory of files to extract (default: "data/pack2")
@@ -27,9 +33,9 @@ $ npm run dbg-pack2 help pack2-extract
 ```
 (requires .pack2 asset file(s) from your game install folder)
 ```
-$ npm run dbg-pack2 help itemdef-extract
+$ npm run dbg-pack2 -- help itemdef-extract
 
-  Usage: npm run dbg-pack2 itemdef-extract [options] [itemdef] [itemdef-output] [locale]
+  Usage: npm run dbg-pack2 -- itemdef-extract [options] [itemdef] [itemdef-output] [locale]
 
   Arguments:
     itemdef         ClientItemDefinitions.txt file to parse (default:
@@ -45,9 +51,8 @@ $ npm run dbg-pack2 help itemdef-extract
 ## Install (as library)
 
 ```sh
-npm install https://github.com/fredkilbourn/dbg-pack2
+npm install dbg-pack2
 ```
-(will add to NPM later)
 
 ## Usage (as library)
 

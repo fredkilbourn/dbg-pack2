@@ -28,14 +28,15 @@ async function pack2Extract( pack2_filename_or_path, pack2_output_path_base, nam
 	const name_hash_map = name_list_filename ? nameListParse( name_list_filename ) : null;
 
 	//build list of pack2 files from filename or path
+	pack2_filename_or_path = path.normalize( path.resolve( pack2_filename_or_path ) );
 	const pack2_files = fs.statSync( pack2_filename_or_path ).isFile() ?
 		{
-			[path.basename(pack2_filename_or_path)]: { path: path.normalize( path.resolve( pack2_filename_or_path ) ) }
+			[path.basename(pack2_filename_or_path)]: { path: pack2_filename_or_path }
 		} :
 		fs.readdirSync( pack2_filename_or_path ).reduce( ( p, c ) =>
 		{
 			if( path.extname( c ) === '.pack2' )
-				p[c] = { path: `${path.normalize( path.resolve( pack2_filename_or_path ) )}/${c}` };
+				p[c] = { path: `${pack2_filename_or_path}/${c}` };
 			return p;
 		}, {} );
 

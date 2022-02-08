@@ -1,5 +1,6 @@
-import path from 'path';
+import { dirname, resolve } from 'path';
 import { fileURLToPath } from 'url';
+import { readFileSync } from 'fs';
 
 import { crc64, crc64ToString } from './crc64.js';
 import pack2Parse from './pack2-parse.js';
@@ -7,15 +8,20 @@ import { nameListParse, pack2Extract } from './pack2-extract.js';
 import { localeParse, itemDefExtract } from './itemdef-extract.js';
 
 //only run as a "program" if this file is being called directly from command line, not when it is being imported
-if( path.resolve( process.argv[1] ) === path.resolve( fileURLToPath( import.meta.url ) ) )
+if( resolve( process.argv[1] ) === resolve( fileURLToPath( import.meta.url ) ) )
 {
 	const { program } = await import( 'commander' );
+
+	//get package version using __dirname emulation
+	const __dirname = dirname( fileURLToPath( import.meta.url ) );
+	const version = JSON.parse( readFileSync( `${__dirname}/../package.json` ) ).version;
 
 	program
 		.showHelpAfterError()
 		.showSuggestionAfterError()
-		.name( 'npm run dbg-pack2' )
-		.description( 'Read Daybreak Games pack2 files' );
+		.name( 'npm run dbg-pack2 --' )
+		.description( 'Read Daybreak Games pack2 files' )
+		.version( `dbg-pack2 v${version}`, '-v, --version' );
 
 	program.command( 'pack2-extract' )
 		.description( 'extract files from a .pack2 file' )
