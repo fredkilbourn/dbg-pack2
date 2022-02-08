@@ -18,6 +18,7 @@ if( path.resolve( process.argv[1] ) === path.resolve( fileURLToPath( import.meta
 		.description( 'Read Daybreak Games pack2 files' );
 
 	program.command( 'pack2-extract' )
+		.description( 'extract files from a .pack2 file' )
 		.argument( '[pack2]', '.pack2 file or directory of files to extract', 'data/pack2' )
 		.argument( '[pack2-output]', 'base path to extract .pack2 files into', 'data/pack2_extract' )
 		.argument( '[name-list]', 'file with list of possible filenames inside of .pack2 file', 'data/{NAMELIST}' )
@@ -42,12 +43,15 @@ if( path.resolve( process.argv[1] ) === path.resolve( fileURLToPath( import.meta
 		} );
 
 	program.command( 'itemdef-extract' )
+		.description( 'extract item definition .json with mapped locale strings' )
 		.argument( '[itemdef]', 'ClientItemDefinitions.txt file to parse', 'data/pack2_extract/data_x64_0.pack2/ClientItemDefinitions.txt' )
 		.argument( '[itemdef-output]', 'path to save extracted .json file', 'data/itemdef.json' )
 		.argument( '[locale]', 'locale file with hashed id to language mappings', 'data/locale/en_us_data.dat' )
 		.action( ( itemdef, itemdef_output, locale ) =>
 		{
 			itemDefExtract( itemdef, itemdef_output, locale );
+
+			console.log( `Extracting '${itemdef}' to '${itemdef_output}'` );
 		} );
 
 	program.parse( process.argv );
