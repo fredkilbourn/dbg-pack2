@@ -1,5 +1,6 @@
 data/*
 !data/{NAMELIST}
+!data/data_extract/
 !data/locale/
 !data/pack2/
 !data/pack2_extract/

@@ -5,7 +5,7 @@ import { readFileSync } from 'fs';
 import { crc64, crc64ToString } from './crc64.js';
 import pack2Parse from './pack2-parse.js';
 import { nameListParse, pack2Extract } from './pack2-extract.js';
-import { localeParse, itemDefExtract } from './itemdef-extract.js';
+import { localeParse, dataExtractWithLocale, dataExtractConfig } from './data-extract.js';
 
 //only run as a "program" if this file is being called directly from command line, not when it is being imported
 if( resolve( process.argv[1] ) === resolve( fileURLToPath( import.meta.url ) ) )
@@ -48,16 +48,16 @@ if( resolve( process.argv[1] ) === resolve( fileURLToPath( import.meta.url ) ) )
 			}
 		} );
 
-	program.command( 'itemdef-extract' )
-		.description( 'extract item definition .json with mapped locale strings' )
-		.argument( '[itemdef]', 'ClientItemDefinitions.txt file to parse', 'data/pack2_extract/data_x64_0.pack2/ClientItemDefinitions.txt' )
-		.argument( '[itemdef-output]', 'path to save extracted .json file', 'data/itemdef.json' )
+	program.command( 'data-extract' )
+		.description( 'extract data file to .json with mapped locale strings' )
+		.argument( '[data]', 'data file to parse', 'data/pack2_extract/data_x64_0.pack2/ClientItemDefinitions.txt' )
+		.argument( '[data-output]', 'path to save extracted .json file', 'data/data_extract' )
 		.argument( '[locale]', 'locale file with hashed id to language mappings', 'data/locale/en_us_data.dat' )
-		.action( ( itemdef, itemdef_output, locale ) =>
+		.action( ( data, data_output, locale ) =>
 		{
-			itemDefExtract( itemdef, itemdef_output, locale );
+			dataExtractWithLocale( data, data_output, locale );
 
-			console.log( `Extracting '${itemdef}' to '${itemdef_output}'` );
+			console.log( `Extracting '${data}' to '${data_output}'` );
 		} );
 
 	program.parse( process.argv );
@@ -76,9 +76,10 @@ export default
 		nameListParse,
 		pack2Extract
 	},
-	itemDefExtract:
+	dataExtract:
 	{
 		localeParse,
-		itemDefExtract
+		dataExtractWithLocale,
+		dataExtractConfig
 	}
 };
