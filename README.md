@@ -23,6 +23,8 @@ $ npm run dbg-pack2 -- help pack2-extract
 
   Usage: npm run dbg-pack2 -- pack2-extract [options] [pack2] [pack2-output] [name-list]
 
+  extract files from a .pack2 file
+
   Arguments:
     pack2         .pack2 file or directory of files to extract (default: "data/pack2")
     pack2-output  base path to extract .pack2 files into (default: "data/pack2_extract")
@@ -33,18 +35,19 @@ $ npm run dbg-pack2 -- help pack2-extract
 ```
 (requires .pack2 asset file(s) from your game install folder)
 ```
-$ npm run dbg-pack2 -- help itemdef-extract
+$ npm run dbg-pack2 -- help data-extract
 
-  Usage: npm run dbg-pack2 -- itemdef-extract [options] [itemdef] [itemdef-output] [locale]
+  Usage: npm run dbg-pack2 -- data-extract [options] [data] [data-output] [locale]
+
+  extract data file to .json with mapped locale strings
 
   Arguments:
-    itemdef         ClientItemDefinitions.txt file to parse (default:
-                    "data/pack2_extract/data_x64_0.pack2/ClientItemDefinitions.txt")
-    itemdef-output  path to save extracted .json file (default: "data/itemdef.json")
-    locale          locale file with hashed id to language mappings (default: "data/locale/en_us_data.dat")
+    data         data file to parse (default: "data/pack2_extract/data_x64_0.pack2/ClientItemDefinitions.txt")
+    data-output  path to save extracted .json file (default: "data/data_extract")
+    locale       locale file with hashed id to language mappings (default: "data/locale/en_us_data.dat")
 
   Options:
-    -h, --help      display help for command
+    -h, --help   display help for command
 ```
 (requires exported `data_x64_0.pack2 => ClientItemDefinitions.txt` file and `en_us_data.dat` locale file from your game install folder)
 
@@ -72,9 +75,10 @@ console.log( dbg_pack2 );
     nameListParse: [Function: nameListParse],
     pack2Extract: [AsyncFunction: pack2Extract]
   },
-  itemDefExtract: {
+  dataExtract: {
     localeParse: [Function: localeParse],
-    itemDefExtract: [Function: itemDefExtract]
+    dataExtractWithLocale: [Function: dataExtractWithLocale],
+    dataExtractConfig: { 'ClientItemDefinitions.txt': [Object], 'Vehicles.txt': [Object] }
   }
 }
 ```
