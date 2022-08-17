@@ -17,7 +17,7 @@
   },
   "main": "source/dbg-pack2.js",
   "dependencies": {
-    "@sindresorhus/is": "^4.4.0",
+    "@sindresorhus/is": "^5.3.0",
     "binary-parser": "^2.0.2",
     "commander": "^9.0.0",
     "file-type": "^17.1.1",
