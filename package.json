@@ -1,6 +1,6 @@
 {
   "name": "dbg-pack2",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Read Daybreak Games pack2 files",
   "license": "MIT",
   "author": {
@@ -24,6 +24,6 @@
     "hash-jenkins": "^1.0.1"
   },
   "devDependencies": {
-    "ava": "^4.0.1"
+    "ava": "^4.3.1"
   }
 }
