@@ -60,7 +60,7 @@ async function pack2Extract( pack2_filename_or_path, pack2_output_path_base, nam
 		{
 			//compose file name if not alredy set from name hash map
 			const filename = asset_header.asset.name ??
-				`${asset_header.nameHashToString()}.${( await asset_header.asset.guessFileType() )?.ext}`;
+				`${asset_header.nameHashToString()}${await asset_header.asset.guessFileExt()}`;
 
 			//write asset
 			fs.writeFileSync( `${pack2_output_path}/${filename}`, await asset_header.asset.toBuffer() );

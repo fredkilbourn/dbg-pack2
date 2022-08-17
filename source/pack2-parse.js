@@ -174,9 +174,21 @@ class Pack2Asset
 			}.bind( this ) );
 	}
 
-	async guessFileType()
+	async guessFileExt()
 	{
-		return await fileTypeFromBuffer( await this.toBuffer() );
+		const buffer = await this.toBuffer();
+		let ext = ( await fileTypeFromBuffer( await this.toBuffer() ) )?.ext;
+		if( ext === undefined )
+		{
+			const eol = buffer.indexOf( '\r' );
+			if( eol !== -1 )
+			{
+				const line = buffer.toString( 'utf8', 0, eol );
+				if( line.match( /^\#\*([A-Z0-9_]+\^)+$/ ) !== null )
+					ext = 'txt';
+			}
+		}
+		return ext !== undefined ? `.${ext}` : '';
 	}
 
 	async toBuffer( inflate = true )
