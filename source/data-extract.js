@@ -3,7 +3,7 @@ import jenk from 'hash-jenkins';
 import fs from 'fs';
 import path from 'path';
 
-import dataExtractConfig from './data-extract-config.js';
+import dataExtractConfig from '../config/default.js';
 
 //build hash map of locale file entries
 function localeParse( locale_filename )
