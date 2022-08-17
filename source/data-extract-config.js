@@ -2,6 +2,7 @@
  * map of data file names and their extraction config
  * skip:	headers we don't process
  * locale:	headers we map to a locale string
+ * filter:	function for filtering based on passed row object
  */
 export default
 {
@@ -38,6 +39,7 @@ export default
 			'MODEL_NAME',
 			'NEXT_TRIAL_DELAY_SEC',
 			'NON_MINI_GAME',
+			'NO_GIFT',
 			'NO_LIVE_GAMER',
 			'NO_SALE',
 			'NO_TRADE',
@@ -59,12 +61,13 @@ export default
 			'SLOT',
 			'SLOT_KEY_OVERRIDE',
 			'SOUND_ID',
+			'TINT_ALIAS',
 			'TINT_GROUP_ID',
 			'TINT_ID',
 			'TRIAL_DURATION_SEC',
 			'UI_MODEL_CAMERA_ID',
 			'USE_REQUIREMENT_ID',
-			'WEAPON_TRAIL_EFFECT_ID',
+			'WEAPON_TRAIL_EFFECT_ID'
 		] ),
 		locale: new Set(
 		[
