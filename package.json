@@ -19,11 +19,11 @@
   "dependencies": {
     "@sindresorhus/is": "^5.3.0",
     "binary-parser": "^2.0.2",
-    "commander": "^9.0.0",
-    "file-type": "^17.1.1",
+    "commander": "^10.0.1",
+    "file-type": "^18.4.0",
     "hash-jenkins": "^1.0.1"
   },
   "devDependencies": {
-    "ava": "^4.3.1"
+    "ava": "^5.2.0"
   }
 }
