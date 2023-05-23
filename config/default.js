@@ -74,8 +74,8 @@ export default
 			'NAME_ID',
 			'DESCRIPTION_ID'
 		] ),
-		//if ITEM_TYPE is 26 (weapon), keep it
-		filter: item => item.ITEM_TYPE === '26'
+		//if ITEM_TYPE is 26 (Weapon) or 48 (Construction Module), keep it
+		filter: item => item.ITEM_TYPE === '26' || item.ITEM_TYPE === '48'
 	},
 	'Vehicles.txt':
 	{
