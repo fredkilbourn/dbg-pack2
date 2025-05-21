@@ -10,16 +10,37 @@ function localeParse( locale_filename )
 {
 	assert.nonEmptyString( locale_filename );
 	
+	let hash_last;
 	return fs.readFileSync( locale_filename, "utf8" ).split( /\r?\n/ ).reduce( ( p, c ) =>
 	{
 		if( c !== '' )
 		{
 			const [ hash, _, text ] = c.split( '\t' );
-			p[hash] = text;
+
+			//only one entry means text continued from previous line
+			if( _ === undefined && text === undefined )
+				p[hash_last] += `\n${hash}`;
+			else
+			{
+				hash_last = hash;
+				p[hash] = text;
+			}
 		}
 		return p;
 	}, {} );
 }
+
+//TEMP LOGIC TO PRE-COMPUTE SOURCE IDS TO HASHES
+/*
+for( let x = 0; x < 10000000; x++ )
+{
+	const key = `Global.Text.${x}`;
+	const hash = jenk.lookup2( key );
+	console.log( { key, hash } );
+	if( hash == 2042523895 )
+		process.exit();
+}
+*/
 
 //read item definitions and parse into formatted map
 function dataExtractWithLocale( data_filename, data_extract_path, locale_filename )
