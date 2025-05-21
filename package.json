@@ -17,13 +17,13 @@
   },
   "main": "source/dbg-pack2.js",
   "dependencies": {
-    "@sindresorhus/is": "^5.3.0",
+    "@sindresorhus/is": "^7.0.1",
     "binary-parser": "^2.0.2",
-    "commander": "^10.0.1",
-    "file-type": "^18.4.0",
+    "commander": "^14.0.0",
+    "file-type": "^20.5.0",
     "hash-jenkins": "^1.0.1"
   },
   "devDependencies": {
-    "ava": "^5.2.0"
+    "ava": "^6.3.0"
   }
 }
